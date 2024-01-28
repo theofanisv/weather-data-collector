@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     public function up(): void
     {
         Schema::create('weather_forecasters', function (Blueprint $table) {
@@ -14,7 +13,7 @@ return new class extends Migration
             $table->string('web_url')->nullable();
             $table->string('collector_class_key');
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->index();
         });
     }
 

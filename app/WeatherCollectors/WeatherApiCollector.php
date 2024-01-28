@@ -2,12 +2,12 @@
 
 namespace App\WeatherCollectors;
 
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use App\Models\WeatherRecord;
 
 class WeatherApiCollector extends WeatherCollector
 {
 
-    public function collectForecast(): EloquentCollection
+    public function collectForecast(): WeatherRecord
     {
         throw new \Exception("Not implemented yet."); // TODO: Implement collectForecast() method.
     }

@@ -2,7 +2,7 @@
 
 namespace App\WeatherCollectors;
 
-use Illuminate\Database\Eloquent\Collection as EloquentCollection;
+use App\Models\WeatherRecord;
 
 abstract class WeatherCollector
 {
@@ -15,8 +15,5 @@ abstract class WeatherCollector
         'open-meteo'  => OpenMeteoCollector::class,
     ];
 
-    /**
-     * @return EloquentCollection<>
-     */
-    abstract public function collectForecast(): EloquentCollection;
+    abstract public function collectForecast(): WeatherRecord;
 }

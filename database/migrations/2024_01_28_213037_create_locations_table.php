@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('region')->nullable();
             $table->string('country')->nullable();
             $table->timestamps();
-            $table->softDeletes();
+            $table->softDeletes()->index();
         });
     }
 
