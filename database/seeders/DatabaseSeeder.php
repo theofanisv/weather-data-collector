@@ -22,5 +22,6 @@ class DatabaseSeeder extends Seeder
         }
 
         $this->call(WeatherForecasterSeeder::class);
+        $this->call(LocationSeeder::class);
     }
 }
