@@ -13,6 +13,7 @@ class LocationFactory extends Factory
     {
         return [
             'name'         => $this->faker->unique()->streetName,
+            'timezone'     => $this->faker->timezone,
             'street'       => $this->faker->streetName,
             'municipality' => null,
             'city'         => $this->faker->city,

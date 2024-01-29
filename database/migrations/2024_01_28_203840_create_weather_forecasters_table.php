@@ -12,6 +12,7 @@ return new class extends Migration {
             $table->string('name');
             $table->string('web_url')->nullable();
             $table->string('collector_class_key');
+            $table->json('settings');
             $table->timestamps();
             $table->softDeletes()->index();
         });

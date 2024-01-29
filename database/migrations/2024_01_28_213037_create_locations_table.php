@@ -11,6 +11,7 @@ return new class extends Migration
         Schema::create('locations', function (Blueprint $table) {
             $table->id();
             $table->string('name');
+            $table->string('timezone');
             // Either coordinates or address is expected to be filled in.
             $table->double('lat')->nullable();
             $table->double('lng')->nullable();

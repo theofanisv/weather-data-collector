@@ -2,7 +2,10 @@
 
 namespace App\WeatherCollectors;
 
+use App\Models\Location;
+use App\Models\WeatherForecaster;
 use App\Models\WeatherRecord;
+use Illuminate\Support\Collection;
 
 abstract class WeatherCollector
 {
@@ -15,5 +18,23 @@ abstract class WeatherCollector
         'open-meteo'  => OpenMeteoCollector::class,
     ];
 
-    abstract public function collectForecast(): WeatherRecord;
+    protected WeatherForecaster $weather_forecaster;
+
+    public function forForecaster(WeatherForecaster $weather_forecaster): static
+    {
+        $this->weather_forecaster = $weather_forecaster;
+
+        return $this;
+    }
+
+    protected function getSetting(string $key): mixed
+    {
+        return data_get($this->weather_forecaster->settings, $key);
+    }
+
+
+    /**
+     * @return Collection<WeatherRecord>
+     */
+    abstract public function retrieveForecast(Location $location): Collection; // EloquentCollection here causes bugs later
 }
