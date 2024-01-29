@@ -31,6 +31,7 @@ class CollectWeatherForecast extends Command
         $locations_query = Location::query()
             ->when($locations, fn(Builder $q) => $q->whereIn('id', $locations));
         $locations_count = $locations_query->count();
+        $time_start = hrtime();
 
         $this->line("Collecting weather data for $locations_count locations ✕ by {$forecasters->count()} providers ✕ 24+1 = " . ($locations_count * $forecasters->count() * (24 + 1)) . " records");
         // Chunk locations because large dataset could exist.
@@ -50,5 +51,7 @@ class CollectWeatherForecast extends Command
             // require the table lock only for one time.
             $records->each->save();
         });
+
+        $this->info("Done " . ((hrtime(true) - $time_start) / 10e5) . "ms");
     }
 }

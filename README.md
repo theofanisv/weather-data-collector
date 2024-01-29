@@ -39,6 +39,7 @@ docker run --rm \
 Afterwards, log into container's bash and set up the Laravel app:
 
 ```bash
+composer setup
 php artisan migrate:fresh --seed
 php artisan weather:collect-forecasts
 ```
